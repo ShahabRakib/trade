@@ -139,6 +139,10 @@ body {
     .grid {
         grid-template-columns: repeat(9, 1fr);
     }
+    .cell {
+    width: 40px;
+    height: 40px;
+}
 }
 
 @media (max-width: 480px) {
