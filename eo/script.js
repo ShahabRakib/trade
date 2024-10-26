@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     signalText.textContent = "Matched!";
                     alertSound.play(); // Play sound if matched
                 } else {
-                    signalText.textContent = "No Match";
+                    signalText.textContent = "No Match! Wait Rakib";
                 }
             })
             .catch(error => console.error('Error fetching data:', error));
