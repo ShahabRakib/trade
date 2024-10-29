@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wins Required per Loss</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; text-align: center; border: 1px solid #ddd; }
+        th { background-color: #f4f4f4; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <h2>Required Wins per Loss for Profit</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Losses (L)</th>
+                <th>Required Wins (W)</th>
+                <th>Net Profit (in Tk)</th>
+            </tr>
+        </thead>
+        <tbody id="combinationsTable">
+        </tbody>
+    </table>
+
+    <script>
+        const winProfit = 100.3;
+        const lossCost = 118;
+        
+        function calculateRequiredWins() {
+            const tableBody = document.getElementById("combinationsTable");
+
+            for (let losses = 0; losses <= 45; losses++) {
+                const requiredWins = Math.ceil((losses * lossCost + winProfit) / winProfit);
+                const netProfit = (requiredWins * winProfit) - (losses * lossCost);
+
+                if (requiredWins <= 54) {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${losses}</td>
+                        <td>${requiredWins}</td>
+                        <td>${netProfit.toFixed(2)}</td>
+                    `;
+                    tableBody.appendChild(row);
+                }
+            }
+        }
+
+        calculateRequiredWins();
+    </script>
+</body>
+</html>
